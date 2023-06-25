@@ -6,7 +6,7 @@ var logger = require('morgan');
 require("dotenv").config()
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+const { session } = require('passport');
 var app = express();
 
 // Set up mongoose connection
@@ -24,6 +24,11 @@ async function main() {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+
+// Passport
+
+
 
 app.use(logger('dev'));
 app.use(express.json());

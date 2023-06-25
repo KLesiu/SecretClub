@@ -15,10 +15,14 @@ nav{
   height: 10%;
   width: 100%;
 }
+nav a{
+  color: black;
+  text-decoration: none;
+}
 #secret{
   color: grey;
 }
-#buttonsContainer button{
+#buttonsContainer button,#signUp{
   background-color: silver;
   border-radius: 5px;
   border: none;
@@ -28,19 +32,32 @@ nav{
   font-size: 14px;
   width: 80px;
 }
-#buttonsContainer button:hover{
+#buttonsContainer button:hover,#signUp:hover{
   background-color: rgb(156, 156, 156);
 }
-main{
+main,form{
+  align-items: center;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
   margin-left: 10%;
   margin-right: 10%;
   min-height: 85vh;
   width: 80%;
 }
-main h1{
+
+main h1,form h1{
   font-size: 40px;
+}
+form label{
+  font-size: 20px;
+  margin-top: 15px;
+}
+form input{
+  height: 20px;
+  margin-top: 15px;
+  width: 20%;
 }
 footer{
   border-top: 1px solid silver;
@@ -52,5 +69,8 @@ footer{
 footer a{
   color: rgb(22, 98, 211);
   text-decoration: none;
+}
+#signUp{
+ margin-top: 15px;
 }
 
