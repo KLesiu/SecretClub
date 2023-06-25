@@ -1,0 +1,9 @@
+Logged out:
+Title, Text, Note info
+
+Logged in:
+Title, Text, Note info
+
+
+Member:
+Name, Title, Date, Text
