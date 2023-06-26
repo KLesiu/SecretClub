@@ -1,29 +1,49 @@
 const bcrypt = require("bcryptjs")
 const User = require("../models/users")
-
+const { body, validationResult } = require("express-validator");
+const asyncHandler = require("express-async-handler")
 
 exports.user_create_get = (req,res,next)=>{
     res.render("sign-up-form",{})
 }
-exports.user_create_post = async(req,res,next)=>{
-    try{
-        bcrypt.hash(req.body.password,10,async(err,hashedPass)=>{
-            if(err){
-                return console.log(err)
-            }
-            const user = new User({
-                name: req.body.name,
-                email: req.body.email,
-                password: hashedPass,
-                admin:false,
-                member: false
+exports.user_create_post =[
+    body("name","Name is required").trim().isLength({min:1}).escape(),
+    body("email").isEmail(),
+    body("password","Password must be longer than 5 characters").isLength({min:6}),
+    body("cpassword","Repeat password must be the same as password").custom((value,{req})=>{
+        return value === req.body.password;
+    }),
+    asyncHandler(async(req,res,next)=>{
+        const errors = validationResult(req)
 
-            }).save()
+        if(!errors.isEmpty()){
+            res.render("sign-up-form",{
+                errors: errors.array()
+            })
+            console.log(errors.array())
+            return
+        }
+        try{
+            bcrypt.hash(req.body.password,10,async(err,hashedPass)=>{
+                if(err){
+                    return console.log(err)
+                }
+                const user = new User({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: hashedPass,
+                    admin:false,
+                    member: false
+    
+                }).save()
+                
+            })
             
-        })
-        
-        res.redirect("/")
-    }catch(err){
-        return next(err)
-    }
-}
+            res.redirect("/")
+        }catch(err){
+            return next(err)
+        }
+    })
+    
+    
+    ] 
