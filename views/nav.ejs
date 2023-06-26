@@ -1,6 +1,13 @@
 <nav>
-    <h2><a href="/"><span id="secret">Secret</span>Club</a></h2>
-    <div id="buttonsContainer"><button>Log In</button>
-        <a href="/sign-up"><button>Sign Up</button></a></div>
+    <h2><span id="secret">Secret</span>Club</h2>
+    <% if(loggedIn){
+        %>
+        <h3>Zalogowany</h3>
+        <%
+    } else{
+        %> <div id="buttonsContainer"><a href="/log-in"><button>Log In</button></a>
+            <a href="/sign-up"><button>Sign Up</button></a></div> <%
+    } %>
+   
     
   </nav>

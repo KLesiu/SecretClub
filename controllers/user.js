@@ -4,7 +4,9 @@ const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler")
 
 exports.user_create_get = (req,res,next)=>{
-    res.render("sign-up-form",{})
+    res.render("sign-up-form",{
+        loggedIn: false
+    })
 }
 exports.user_create_post =[
     body("name","Name is required").trim().isLength({min:1}).escape(),
@@ -18,7 +20,8 @@ exports.user_create_post =[
 
         if(!errors.isEmpty()){
             res.render("sign-up-form",{
-                errors: errors.array()
+                errors: errors.array(),
+                loggedIn: false
             })
             console.log(errors.array())
             return
@@ -39,7 +42,7 @@ exports.user_create_post =[
                 
             })
             
-            res.redirect("/")
+           res.redirect("/")
         }catch(err){
             return next(err)
         }
@@ -47,3 +50,9 @@ exports.user_create_post =[
     
     
     ] 
+
+exports.user_login_get = (req,res,next)=>{
+    res.render("log-in-form",{
+        loggedIn: false
+    })
+}
