@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/sign-up',user_controller.user_create_get)
 
+router.post('/sign-up',user_controller.user_create_post)
 
 
 
