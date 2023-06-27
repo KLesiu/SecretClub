@@ -4,7 +4,7 @@ const user_controller = require("../controllers/user")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'SecretClub', loggedIn: false });
+  res.render('index', { title: 'SecretClub', user: req.user });
 });
 
 

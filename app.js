@@ -5,18 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bcrypt = require("bcryptjs")
 require("dotenv").config()
-
-
 const LocalStrategy = require("passport-local").Strategy;
 const session = require("express-session");
-
 const passport = require('passport');
 const User = require("./models/users")
-
-
-
-
-
+const indexRouter = require('./routes/index');
 
 // Set up mongoose connection
 const mongoose = require("mongoose");
@@ -83,17 +76,15 @@ app.use(function (req, res, next) {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
-
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 
 //Routes
-const indexRouter = require('./routes/index');
+
 app.use('/', indexRouter);
 
 

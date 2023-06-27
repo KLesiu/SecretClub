@@ -6,9 +6,7 @@ const passport = require("passport");
 
 
 exports.user_create_get = (req,res,next)=>{
-    res.render("sign-up-form",{
-        loggedIn: false
-    })
+    res.render("sign-up-form",{ user: req.user })
 }
 exports.user_create_post =[
     body("name","Name is required").trim().isLength({min:1}).escape(),
@@ -23,7 +21,7 @@ exports.user_create_post =[
         if(!errors.isEmpty()){
             res.render("sign-up-form",{
                 errors: errors.array(),
-                loggedIn: false
+                user: req.user
             })
             console.log(errors.array())
             return
@@ -55,11 +53,10 @@ exports.user_create_post =[
 
 exports.user_login_get = (req,res,next)=>{
     res.render("log-in-form",{
-        loggedIn: false
+        user: req.user
     })
 }
-exports.user_login_post=
-    passport.authenticate("local", {
+exports.user_login_post=passport.authenticate("local", {
         successRedirect: "/",
         failureRedirect: "/log-in",
        
