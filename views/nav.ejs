@@ -2,7 +2,10 @@
     <h2><span id="secret">Secret</span>Club</h2>
     <% if(user){
         %>
-        <h3>Zalogowany</h3>
+        <div id="buttonsContainer">
+            <a href="/add-msg"><button>Add message</button></a>
+            <button>Join Club</button>
+        </div>
         <%
     } else{
         %> <div id="buttonsContainer"><a href="/log-in"><button>Log In</button></a>

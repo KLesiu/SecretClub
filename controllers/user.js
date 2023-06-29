@@ -17,17 +17,18 @@ exports.user_create_post =[
     }),
     
     asyncHandler(async(req,res,next)=>{
-        const username = await User.find({name:req.body.name})
-        const email = await  User.find({email:req.body.email})
+        const username = await User.findOne({name:req.body.name})
+        const email = await  User.findOne({email:req.body.email})
        
       
-       if(username !== []){
+       if(username){
+  
         return res.render("sign-up-form",{
             user: req.user,
             errors: [{msg: "We have user with that name. Try again."}]
         })
        }
-       if(email !== []){
+       if(email){
         return res.render("sign-up-form",{
             user: req.user,
             errors: [{msg: "We have user with that email. Try again."}]
@@ -70,7 +71,8 @@ exports.user_create_post =[
 
 exports.user_login_get = (req,res,next)=>{
     res.render("log-in-form",{
-        user: req.user
+        user: req.user,
+        
     })
 }
 exports.user_login_post=passport.authenticate("local", {
