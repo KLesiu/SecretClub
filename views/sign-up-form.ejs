@@ -17,6 +17,17 @@
         <label for="cpassword">Confirm Password:</label>
         <input type="password" name="cpassword" id="">
         <button id="signUp" type="submit">Join us!</button>
+        <% if(errors){
+          %> 
+          <ul>
+            <% for(error in errors){
+              %>
+              <li style="color:red"><%= (errors[error].msg) %></li>
+              <%
+            } %>
+          </ul>
+          <%
+        } %>
     </form>
     <%- include('footer') %>
   </body>

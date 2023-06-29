@@ -23,9 +23,9 @@ async function main() {
 //Passport
 passport.use(
   new LocalStrategy(async(username, password, done) => {
-    console.log('works')
+    
     try {
-      console.log('more')
+    
       const user = await User.findOne({ name: username });
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
@@ -33,7 +33,7 @@ passport.use(
       bcrypt.compare(password, user.password, (err, res) => {
           if (res) {
             // passwords match! log user in
-            console.log("git")
+           
             return done(null, user)
           } else {
             // passwords do not match!

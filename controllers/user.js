@@ -6,16 +6,33 @@ const passport = require("passport");
 
 
 exports.user_create_get = (req,res,next)=>{
-    res.render("sign-up-form",{ user: req.user })
+    res.render("sign-up-form",{ user: req.user,errors:[] })
 }
 exports.user_create_post =[
     body("name","Name is required").trim().isLength({min:1}).escape(),
-    body("email").isEmail(),
+    body("email", "Email is required").isEmail(),
     body("password","Password must be longer than 5 characters").isLength({min:6}),
     body("cpassword","Repeat password must be the same as password").custom((value,{req})=>{
         return value === req.body.password;
     }),
+    
     asyncHandler(async(req,res,next)=>{
+        const username = await User.find({name:req.body.name})
+        const email = await  User.find({email:req.body.email})
+       
+      
+       if(username !== []){
+        return res.render("sign-up-form",{
+            user: req.user,
+            errors: [{msg: "We have user with that name. Try again."}]
+        })
+       }
+       if(email !== []){
+        return res.render("sign-up-form",{
+            user: req.user,
+            errors: [{msg: "We have user with that email. Try again."}]
+        })
+       }
         const errors = validationResult(req)
 
         if(!errors.isEmpty()){
@@ -23,7 +40,7 @@ exports.user_create_post =[
                 errors: errors.array(),
                 user: req.user
             })
-            console.log(errors.array())
+           
             return
         }
         try{
