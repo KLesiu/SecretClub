@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Message</title>
+    <%- include('head-connects') %>
+  </head>
+  <body>
+    <%- include('nav') %>
+    <form action="/add-msg" method="POST">
+        <h1>Add Message</h1>
+        <label for="title">Title</label>
+        <input name="title" type="text">
+        <label for="msg">Message</label>
+        <textarea name="msg" id="" cols="30" rows="10"></textarea>
+        <button id="addMsg" type="submit">Add Message!</button>
+     
+        
+    </form>
+    <%- include('footer') %>
+  </body>
+</html>

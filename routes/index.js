@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const user_controller = require("../controllers/user")
+const msg_controller = require("../controllers/msg")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -15,6 +16,8 @@ router.post('/sign-up',user_controller.user_create_post)
 router.get("/log-in",user_controller.user_login_get)
 
 router.post("/log-in",user_controller.user_login_post)
+
+router.get('/add-msg', msg_controller.msg_create_get)
 
 
 module.exports = router;
