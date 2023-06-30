@@ -17,7 +17,7 @@ exports.msg_create_post = [
                 user:res.locals.currentUser
             })
         }
-        
+        console.log(res.locals.currentUser)
         const message = new Msg({
             user: req.user._id,
             title:req.body.title,

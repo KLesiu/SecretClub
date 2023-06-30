@@ -8,6 +8,21 @@
     <%- include('nav') %>
     <main>
       <h1>Messages</h1>
+      <%  if(messages){
+        %>
+        <% for(message in messages){
+          %>
+          <div class="messageHolder">
+            
+            <h3><%= messages[messages.length-1-message].title %></h3>
+            
+            <p><%= messages[messages.length-1-message].message %></p>
+            <h4>Created by: Anonymous </h4>
+          </div>
+          <%
+        } %>
+        <%
+      } %>
     </main>
     <%- include('footer') %>
   </body>

@@ -1,11 +1,14 @@
 var express = require('express');
 var router = express.Router();
+const Message = require('../models/msg')
 const user_controller = require("../controllers/user")
 const msg_controller = require("../controllers/msg")
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'SecretClub', user: res.locals.currentUser });
+router.get('/', async function(req, res, next) {
+  const messages = await Message.find().populate("user").exec()
+  
+  res.render('index', { title: 'SecretClub', user: res.locals.currentUser,messages:messages });
 });
 
 

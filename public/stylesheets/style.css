@@ -64,6 +64,7 @@ footer{
   display: flex;
   justify-content: center;
   height: 10%;
+  margin-top: 5vh;
   width: 100%;
 }
 footer a{
@@ -74,6 +75,22 @@ footer a{
  margin-top: 15px;
 }
 textarea{
+  margin-top: 15px;
   width: 20%;
+}
+.messageHolder{
+  -webkit-box-shadow: 11px 4px 15px -7px rgba(66, 68, 90, 1);
+-moz-box-shadow: 11px 4px 15px -7px rgba(66, 68, 90, 1);
+box-shadow: 11px 4px 15px -7px rgba(66, 68, 90, 1);
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  width: 80%;
+}
+h4{
+  color: rgb(95, 95, 95);
+  font-size: 13px;
 }
 
