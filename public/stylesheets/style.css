@@ -22,7 +22,7 @@ nav a{
 #secret{
   color: grey;
 }
-#buttonsContainer button,#signUp,#logIn{
+#buttonsContainer button,#signUp,#logIn,#addMsg{
   background-color: silver;
   border-radius: 5px;
   border: none;
@@ -32,7 +32,7 @@ nav a{
   font-size: 14px;
   width: 80px;
 }
-#buttonsContainer button:hover,#signUp:hover,#logIn:hover{
+#buttonsContainer button:hover,#signUp:hover,#logIn:hover,#addMsg:hover{
   background-color: rgb(156, 156, 156);
 }
 main,form{
@@ -70,7 +70,10 @@ footer a{
   color: rgb(22, 98, 211);
   text-decoration: none;
 }
-#signUp,#logIn{
+#signUp,#logIn,#addMsg{
  margin-top: 15px;
+}
+textarea{
+  width: 20%;
 }
 

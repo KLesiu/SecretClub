@@ -6,7 +6,7 @@ const passport = require("passport");
 
 
 exports.user_create_get = (req,res,next)=>{
-    res.render("sign-up-form",{ user: req.user,errors:[] })
+    res.render("sign-up-form",{ user: res.locals.currentUser,errors:[] })
 }
 exports.user_create_post =[
     body("name","Name is required").trim().isLength({min:1}).escape(),
@@ -24,13 +24,13 @@ exports.user_create_post =[
        if(username){
   
         return res.render("sign-up-form",{
-            user: req.user,
+            user: res.locals.currentUser,
             errors: [{msg: "We have user with that name. Try again."}]
         })
        }
        if(email){
         return res.render("sign-up-form",{
-            user: req.user,
+            user: res.locals.currentUser,
             errors: [{msg: "We have user with that email. Try again."}]
         })
        }
@@ -39,7 +39,7 @@ exports.user_create_post =[
         if(!errors.isEmpty()){
             res.render("sign-up-form",{
                 errors: errors.array(),
-                user: req.user
+                user: res.locals.currentUser
             })
            
             return
@@ -71,7 +71,7 @@ exports.user_create_post =[
 
 exports.user_login_get = (req,res,next)=>{
     res.render("log-in-form",{
-        user: req.user,
+        user: res.locals.currentUser,
         
     })
 }

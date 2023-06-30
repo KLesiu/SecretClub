@@ -12,8 +12,16 @@
         <input name="title" type="text">
         <label for="msg">Message</label>
         <textarea name="msg" id="" cols="30" rows="10"></textarea>
-        <button id="addMsg" type="submit">Add Message!</button>
-     
+        <button id="addMsg" type="submit">ADD!</button>
+        <% if(errors){%>
+          <ul>
+            <% for(error in errors){
+              %>
+              <li style="color:red"><%= (errors[error].msg) %></li>
+              <%
+            } %>
+          </ul>
+          <%} %>
         
     </form>
     <%- include('footer') %>

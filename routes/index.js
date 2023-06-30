@@ -5,7 +5,7 @@ const msg_controller = require("../controllers/msg")
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'SecretClub', user: req.user });
+  res.render('index', { title: 'SecretClub', user: res.locals.currentUser });
 });
 
 
@@ -18,6 +18,8 @@ router.get("/log-in",user_controller.user_login_get)
 router.post("/log-in",user_controller.user_login_post)
 
 router.get('/add-msg', msg_controller.msg_create_get)
+
+router.post('/add-msg',msg_controller.msg_create_post)
 
 
 module.exports = router;
