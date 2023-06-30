@@ -3,6 +3,7 @@ const User = require("../models/users")
 const { body, validationResult } = require("express-validator");
 const asyncHandler = require("express-async-handler")
 const passport = require("passport");
+require("dotenv").config()
 
 
 exports.user_create_get = (req,res,next)=>{
@@ -81,3 +82,14 @@ exports.user_login_post=passport.authenticate("local", {
        
         
       })
+
+
+exports.user_check_post=async (req,res)=>{
+    if(req.body.key=`${process.env.KEY_CLUB}`){
+        const update= await User.findByIdAndUpdate(res.locals.currentUser._id,{member:true})
+        update.save()
+        
+    }
+    res.redirect("/")
+    
+}

@@ -24,5 +24,7 @@ router.get('/add-msg', msg_controller.msg_create_get)
 
 router.post('/add-msg',msg_controller.msg_create_post)
 
+router.post('/check',user_controller.user_check_post)
+
 
 module.exports = router;

@@ -2,9 +2,10 @@
     <h2><span id="secret">Secret</span>Club</h2>
     <% if(user){
         %>
+        <h2>Welcome <span id="spanName"><%= user.name %></span>!</h2>
         <div id="buttonsContainer">
             <a href="/add-msg"><button>Add message</button></a>
-            <button>Join Club</button>
+            <button id="joinClub">Join Club</button>
         </div>
         <%
     } else{
