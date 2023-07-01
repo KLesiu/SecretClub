@@ -10,4 +10,5 @@ const MsgSchema = new Schema({
 
 })
 
+
 module.exports = mongoose.model('Message', MsgSchema)

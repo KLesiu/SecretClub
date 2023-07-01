@@ -27,3 +27,9 @@ exports.msg_create_post = [
         res.redirect("/")
     })
 ]
+
+exports.msg_delete_get=asyncHandler(async(req,res,next)=>{
+  const message = await Msg.findByIdAndRemove(req.params.id)
+  res.redirect('/')
+
+})

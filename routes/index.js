@@ -28,5 +28,8 @@ router.post('/check',user_controller.user_check_post)
 
 router.get('/log-out',user_controller.user_log_out)
 
+router.get('/:id/delete',msg_controller.msg_delete_get)
+
+
 
 module.exports = router;
