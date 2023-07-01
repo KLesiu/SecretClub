@@ -17,7 +17,7 @@
             <h3><%= messages[messages.length-1-message].title %></h3>
             
             <p><%= messages[messages.length-1-message].message %></p>
-            <h4>Created by: Anonymous </h4>
+            <h4>Created by:<% if(user){%> <% if(user.member){%> <%= messages[messages.length-1-message].user.name %> <%} else{ %> Anonymous (You have to be a club member to see authors) <%} %> <%} else{%> Anonymous <%} %></h4>
           </div>
           <%
         } %>

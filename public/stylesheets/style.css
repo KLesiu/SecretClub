@@ -22,6 +22,11 @@ nav a{
 #secret{
   color: grey;
 }
+#buttonsContainer{
+  display: flex;
+  justify-content: space-around;
+  min-width: 15%;
+}
 #buttonsContainer button,#signUp,#logIn,#addMsg{
   background-color: silver;
   border-radius: 5px;
@@ -160,5 +165,8 @@ h4{
   position: absolute;
   right: 0;
   top: 0;
+}
+.imgName{
+  height: 30px;
 }
 

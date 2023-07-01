@@ -8,7 +8,7 @@ const msg_controller = require("../controllers/msg")
 router.get('/', async function(req, res, next) {
   const messages = await Message.find().populate("user").exec()
   
-  res.render('index', { title: 'SecretClub', user: res.locals.currentUser,messages:messages });
+  res.render('index', { title: 'SecretClub', user: res.locals.currentUser,messages:messages, });
 });
 
 
@@ -25,6 +25,8 @@ router.get('/add-msg', msg_controller.msg_create_get)
 router.post('/add-msg',msg_controller.msg_create_post)
 
 router.post('/check',user_controller.user_check_post)
+
+router.get('/log-out',user_controller.user_log_out)
 
 
 module.exports = router;

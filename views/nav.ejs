@@ -2,10 +2,14 @@
     <h2><span id="secret">Secret</span>Club</h2>
     <% if(user){
         %>
-        <h2>Welcome <span id="spanName"><%= user.name %></span>!</h2>
+        <h2>Welcome <% if(user.member){%> <img class="imgName" src="../images/crown.png" alt=""> <span id="spanName"><%= user.name %></span>!  <%} else{%><span id="spanName"><%= user.name %></span>! <%} %></h2>
         <div id="buttonsContainer">
             <a href="/add-msg"><button>Add message</button></a>
-            <button id="joinClub">Join Club</button>
+            <% if(!user.member){
+                %> <button id="joinClub">Join Club</button><%
+            }
+            %>
+            <a href="/log-out"><button>Log-out</button></a>
         </div>
         <%
     } else{

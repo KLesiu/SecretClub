@@ -93,3 +93,12 @@ exports.user_check_post=async (req,res)=>{
     res.redirect("/")
     
 }
+
+exports.user_log_out=(req,res,next)=>{
+    req.logout(function(err){
+        if(err){
+          return  next(err)
+        }
+        res.redirect("/");
+    })
+}
