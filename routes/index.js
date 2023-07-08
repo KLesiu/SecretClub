@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const Message = require('../models/msg')
+const Message = require('../models/msgs')
 const user_controller = require("../controllers/user")
 const msg_controller = require("../controllers/msg")
 
